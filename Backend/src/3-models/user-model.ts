@@ -1,4 +1,4 @@
-import mongoose, { Document, ObjectId, Schema, model } from "mongoose";
+import { Document, Schema, model } from "mongoose";
 import { Role } from "./enums";
 
 export interface IUserModel extends Document {
