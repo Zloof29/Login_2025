@@ -1,4 +1,5 @@
 import { cyber } from "../2-utils/cyber";
+import { credentialsModel } from "../3-models/credentials-model";
 import { Role } from "../3-models/enums";
 import { IUserModel, UserModel } from "../3-models/user-model";
 
@@ -17,5 +18,9 @@ class UserService {
 
     const token = cyber.generateNewToken(newUser);
     return token;
+  }
+
+  public async login(credentials: credentialsModel) {
+    
   }
 }
