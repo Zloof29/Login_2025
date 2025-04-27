@@ -6,7 +6,7 @@ import { fileSaver } from "uploaded-file-saver";
 import { appConfig } from "./2-utils/app-config";
 import { errorsMiddleware } from "./6-middleware/errors-middleware";
 import { loggerMiddleware } from "./6-middleware/logger-middleware";
-import { bookRouter } from "./5-controllers/book-controller";
+import { bookRouter } from "./5-controllers/user-controller";
 import { dal } from "./2-utils/dal";
 
 // Main application class:
