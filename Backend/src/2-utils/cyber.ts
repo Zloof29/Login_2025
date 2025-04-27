@@ -7,21 +7,21 @@ class Cyber {
   private secretKey = "TheAmazing4578-99Students!";
   private hashingSalt = "MakeThingsGoRight!!!";
 
-  public hash(plainText: string): string {
+  public hash(plaintext: string): string {
     return crypto
       .createHmac("SHA-512", this.hashingSalt)
-      .update(plainText)
+      .update(plaintext)
       .digest("hex");
   }
 
   public generateNewToken(user: IUserModel): string {
-    const userCopy: IUserModel = JSON.parse(JSON.stringify(user));
+    const copyUser: IUserModel = JSON.parse(JSON.stringify(user));
 
-    delete userCopy.password;
+    delete copyUser.password;
 
-    const options: SignOptions = { expiresIn: "3h" };
+    const option: SignOptions = { expiresIn: "3h" };
 
-    const token = jwt.sign(userCopy, this.secretKey, options);
+    const token = jwt.sign(copyUser, this.secretKey, option);
 
     return token;
   }
@@ -40,9 +40,11 @@ class Cyber {
 
   public isAdmin(token: string): boolean {
     try {
-      const container = jwt.decode(token) as IUserModel;
+      if (!token) return false;
 
-      const user = container;
+      const container = jwt.decode(token) as { user: IUserModel };
+
+      const user = container.user;
 
       return user.roleId === Role.Admin;
     } catch (error: any) {
