@@ -1,4 +1,5 @@
 import { cyber } from "../2-utils/cyber";
+import { ValidationError } from "../3-models/client-errors";
 import { credentialsModel } from "../3-models/credentials-model";
 import { Role } from "../3-models/enums";
 import { IUserModel, UserModel } from "../3-models/user-model";
@@ -21,6 +22,18 @@ class UserService {
   }
 
   public async login(credentials: credentialsModel) {
-    
+    const hashedPassword = cyber.hash(credentials.password);
+
+    const user = await UserModel.findOne({
+      email: credentials.email,
+      password: hashedPassword,
+    }).exec();
+
+    if (!user) throw new ValidationError("Invalid email or password!");
+
+    const token = cyber.generateNewToken(user);
+    return token;
   }
 }
+
+export const userService = new UserService();
