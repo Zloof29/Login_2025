@@ -1,22 +1,22 @@
-.RegisterMessage {
+.LoginMessage {
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
 }
 
-.RegisterMessage span {
+.LoginMessage span {
   padding-top: 50%;
   color: white;
   font-size: 50px;
 }
 
-.RegisterMessage p {
+.LoginMessage p {
   color: white;
   text-align: center;
 }
 
-.RegisterMessage button {
+.LoginMessage button {
   padding: 16px;
   width: 250px;
   background-color: white;
@@ -24,6 +24,6 @@
   border-radius: 8px;
 }
 
-.RegisterMessage button:hover {
+.LoginMessage button:hover {
   font-weight: bold;
 }

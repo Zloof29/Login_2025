@@ -27,7 +27,7 @@
   border: 1px solid transparent;
   border-radius: 8px;
   padding: 16px;
-  background-color: aqua;
+  background-color: rgb(43, 163, 163);
 }
 
 .Login form > button:hover {

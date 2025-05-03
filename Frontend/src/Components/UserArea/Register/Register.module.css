@@ -1,3 +1,37 @@
 .Register {
-	
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.Register h1 {
+  font-size: 50px;
+}
+
+.Register form {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 16px;
+}
+
+.Register form > input {
+  width: 300px;
+  padding: 16px;
+  border: 1px solid black;
+  border-radius: 8px;
+}
+
+.Register form > button {
+  width: 330px;
+  padding: 16px;
+  border: 0;
+  border-radius: 8px;
+  background-color: rgb(43, 163, 163);
+}
+
+.Register form > button:hover {
+  font-weight: bold;
 }
