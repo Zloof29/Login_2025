@@ -9,19 +9,19 @@ body {
   display: flex;
   flex-direction: row;
   width: 100vw;
-  height: 500px;
+  height: 100vh;
   margin: auto;
   gap: 16px;
 }
 
 .Main1 {
-  flex: 3;
+  flex: 2;
   background-color: white;
   padding: 16px;
 }
 
 .Main2 {
   flex: 1;
-  background-color: aqua;
+  background-color: rgb(43, 163, 163);
   padding: 16px;
 }
