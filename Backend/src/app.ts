@@ -6,49 +6,48 @@ import { fileSaver } from "uploaded-file-saver";
 import { appConfig } from "./2-utils/app-config";
 import { errorsMiddleware } from "./6-middleware/errors-middleware";
 import { loggerMiddleware } from "./6-middleware/logger-middleware";
-import { bookRouter } from "./5-controllers/user-controller";
+import { userRouter } from "./5-controllers/user-controller";
 import { dal } from "./2-utils/dal";
 
 // Main application class:
 class App {
+  // Express server:
+  private server = express();
 
-    // Express server: 
-    private server = express();
+  // Start app:
+  public async start() {
+    // Enable CORS requests:
+    this.server.use(cors()); // Enable CORS for any frontend website.
 
-    // Start app:
-    public async start() {
+    // Create a request.body containing the given json from the front:
+    this.server.use(express.json());
 
-        // Enable CORS requests:
-        this.server.use(cors()); // Enable CORS for any frontend website.
+    // Create request.files containing uploaded files:
+    this.server.use(expressFileUpload());
 
-        // Create a request.body containing the given json from the front:
-        this.server.use(express.json());
+    // Configure images folder:
+    fileSaver.config(path.join(__dirname, "1-assets", "images"));
 
-        // Create request.files containing uploaded files: 
-        this.server.use(expressFileUpload());
+    // Register middleware:
+    this.server.use(loggerMiddleware.logToConsole);
 
-        // Configure images folder: 
-        fileSaver.config(path.join(__dirname, "1-assets", "images"));
+    // Connect any controller route to the server:
+    this.server.use("/api", userRouter);
 
-        // Register middleware:
-        this.server.use(loggerMiddleware.logToConsole);
+    // Route not found middleware:
+    this.server.use(errorsMiddleware.routeNotFound);
 
-        // Connect any controller route to the server:
-        this.server.use("/api", bookRouter);
+    // Catch all middleware:
+    this.server.use(errorsMiddleware.catchAll);
 
-        // Route not found middleware: 
-        this.server.use(errorsMiddleware.routeNotFound);
+    // Connect to MongoDB:
+    await dal.connect();
 
-        // Catch all middleware: 
-        this.server.use(errorsMiddleware.catchAll);
-
-        // Connect to MongoDB:
-        await dal.connect();
-
-        // Run server:
-        this.server.listen(appConfig.port, () => console.log("Listening on http://localhost:" + appConfig.port));
-    }
-
+    // Run server:
+    this.server.listen(appConfig.port, () =>
+      console.log("Listening on http://localhost:" + appConfig.port)
+    );
+  }
 }
 
 const app = new App();
