@@ -1,3 +1,39 @@
 .Login {
-	
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  box-sizing: border-box;
+}
+
+.Login h1 {
+  font-size: 50px;
+}
+
+.Login form {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.Login form > input {
+  padding: 16px;
+  width: 300px;
+  border: 1px solid black;
+  border-radius: 8px;
+}
+
+.Login form > button {
+  border: 1px solid transparent;
+  border-radius: 8px;
+  padding: 16px;
+  background-color: aqua;
+}
+
+.Login form > button:hover {
+  font-weight: bold;
+}
+
+.Login form > input + span {
+  color: red;
 }
