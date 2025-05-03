@@ -1,17 +1,17 @@
-import { BrowserRouter, Route, Routes } from "react-router-dom";
+import { Route, Routes } from "react-router-dom";
 import styles from "./Routing.module.css";
 import { Page404 } from "../Page404/Page404";
+import { Login } from "../../UserArea/Login/Login";
+import { Register } from "../../UserArea/Register/Register";
 
 export function Routing(): React.ReactElement {
   return (
     <div className={styles.Routing}>
-      <BrowserRouter>
-        <Routes>
-          {/* <Route path="/login" element={<Login />} /> */}
-          {/* <Route path="/register" element={<Register />} /> */}
-          <Route path="*" element={<Page404 />} />
-        </Routes>
-      </BrowserRouter>
+      <Routes>
+        <Route path="/login" element={<Login />} />
+        <Route path="/register" element={<Register />} />
+        <Route path="*" element={<Page404 />} />
+      </Routes>
     </div>
   );
 }
