@@ -19,7 +19,7 @@ export function Login(): React.ReactElement {
     try {
       await userService.login(credentials);
       notify.success("Welcome back!");
-      // navigate("")
+      // navigate("/")
     } catch (error: any) {
       notify.error(errorHandler.getError(error));
     }
