@@ -26,7 +26,7 @@ export function Register(): React.ReactElement {
 
   return (
     <div className={styles.Register}>
-      <h1>CREATE ACCOUNT</h1>
+      <h1>Create Account</h1>
 
       <form onSubmit={handleSubmit(send)}>
         <input
