@@ -44,7 +44,7 @@ export function Login(): React.ReactElement {
         {errors.email && <span>{errors.email.message}</span>}
 
         <input
-          type="text"
+          type="password"
           placeholder="Password"
           {...register("password", {
             required: "Password is required.",
