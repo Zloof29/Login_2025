@@ -52,7 +52,7 @@ class UserService {
       const action = userAction.initUser(dbUser);
       store.dispatch(action);
     } catch (error: any) {
-      notify.error(errorHandler.getError(error));
+      throw error;
     }
   }
 

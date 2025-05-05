@@ -3,6 +3,7 @@ import { UserModel } from "../3-models/user-model";
 import { userService } from "../4-services/user-service";
 import { StatusCode } from "../3-models/enums";
 import { credentialsModel } from "../3-models/credentials-model";
+import { cyber } from "../2-utils/cyber";
 
 class UserController {
   public readonly router = express.Router();

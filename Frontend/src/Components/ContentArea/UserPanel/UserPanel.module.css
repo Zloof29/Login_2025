@@ -1,3 +1,18 @@
 .UserPanel {
-	
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+}
+
+.UserPanel > .Container {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  width: 100%;
+  background-color: aqua;
+}
+
+.Box {
+  width: 200px;
+  text-align: center;
 }
