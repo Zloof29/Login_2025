@@ -13,10 +13,12 @@ export function Layout(): React.ReactElement {
         <Routing />
       </div>
 
-      <div className={styles.Main2}>
-        {location.pathname === "/login" && <RegisterMessage />}
-        {location.pathname === "/register" && <LoginMessage />}
-      </div>
+      {location.pathname !== "/userPanel" && (
+        <div className={styles.Main2}>
+          {location.pathname === "/login" && <RegisterMessage />}
+          {location.pathname === "/register" && <LoginMessage />}
+        </div>
+      )}
     </div>
   );
 }
