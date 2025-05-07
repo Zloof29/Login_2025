@@ -61,6 +61,26 @@ class UserService {
     const action = userAction.logout();
     store.dispatch(action);
   }
+
+  public async resetPassword(credentials: CredentialsModel) {
+    try {
+      const response = await axios.post<string>(
+        appConfig.resetPassword,
+        credentials
+      );
+      const token = response.data;
+
+      localStorage.setItem("token", token);
+
+      const container = jwtDecode<UserModel>(token);
+      const dbUser = container;
+
+      const action = userAction.initUser(dbUser);
+      store.dispatch(action);
+    } catch (error: any) {
+      notify.error(errorHandler.getError(error));
+    }
+  }
 }
 
 export const userService = new UserService();
