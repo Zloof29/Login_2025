@@ -34,6 +34,19 @@ class UserService {
     const token = cyber.generateNewToken(user);
     return token;
   }
+
+  public async resetPassword(credentials: credentialsModel) {
+    const user = await UserModel.findOne({ email: credentials.email }).exec();
+
+    if (!user) throw new ValidationError("Email not found!");
+
+    const hashedPassword = cyber.hash(credentials.password);
+
+    user.password = hashedPassword;
+    await user.save();
+
+    return cyber.generateNewToken(user);
+  }
 }
 
 export const userService = new UserService();

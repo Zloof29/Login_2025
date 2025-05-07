@@ -1,7 +1,7 @@
 .UserPanel {
+  box-sizing: border-box;
   display: flex;
-  flex-direction: row;
-  justify-content: center;
+  flex-direction: column;
 }
 
 .UserPanel > .Container {
@@ -9,10 +9,29 @@
   flex-direction: row;
   justify-content: center;
   width: 100%;
+  border: 1px solid transparent;
+  border-radius: 8px 8px 0 0;
   background-color: aqua;
 }
 
 .Box {
-  width: 200px;
+  width: 300px;
   text-align: center;
+  font-size: 32px;
+}
+
+.SideBySideContainer {
+  display: flex;
+  flex-direction: row;
+}
+
+.PasswordContainer {
+  flex: 1;
+  background-color: black;
+  height: 100px;
+}
+.EmailContainer {
+  flex: 1;
+  background-color: red;
+  height: 100px;
 }
