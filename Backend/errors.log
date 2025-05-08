@@ -70,3 +70,54 @@ Message: Invalid email or password!
 Stack: undefined
 ---------------------------------------
 
+Time: Thu May 08 2025 14:47:27 GMT+0300 (שעון ישראל (קיץ))
+Message: The "data" argument must be of type string or an instance of Buffer, TypedArray, or DataView. Received undefined
+Stack: TypeError: The "data" argument must be of type string or an instance of Buffer, TypedArray, or DataView. Received undefined
+    at Hmac.update (node:internal/crypto/hash:104:11)
+    at Cyber.hash (C:\Users\Lior Bas\OneDrive\Desktop\login_2025\Backend\src\2-utils\cyber.ts:13:8)
+    at UserService.<anonymous> (C:\Users\Lior Bas\OneDrive\Desktop\login_2025\Backend\src\4-services\user-service.ts:45:34)
+    at Generator.next (<anonymous>)
+    at fulfilled (C:\Users\Lior Bas\OneDrive\Desktop\login_2025\Backend\src\4-services\user-service.ts:5:58)
+    at processTicksAndRejections (node:internal/process/task_queues:95:5)
+---------------------------------------
+
+Time: Thu May 08 2025 15:35:30 GMT+0300 (שעון ישראל (קיץ))
+Message: Invalid email or password!
+Stack: undefined
+---------------------------------------
+
+Time: Thu May 08 2025 15:45:05 GMT+0300 (שעון ישראל (קיץ))
+Message: Invalid email or password!
+Stack: undefined
+---------------------------------------
+
+Time: Thu May 08 2025 15:46:57 GMT+0300 (שעון ישראל (קיץ))
+Message: Route / not found.
+Stack: undefined
+---------------------------------------
+
+Time: Thu May 08 2025 15:46:57 GMT+0300 (שעון ישראל (קיץ))
+Message: Route /favicon.ico not found.
+Stack: undefined
+---------------------------------------
+
+Time: Thu May 08 2025 15:47:03 GMT+0300 (שעון ישראל (קיץ))
+Message: Route /login not found.
+Stack: undefined
+---------------------------------------
+
+Time: Thu May 08 2025 15:47:06 GMT+0300 (שעון ישראל (קיץ))
+Message: Route /login not found.
+Stack: undefined
+---------------------------------------
+
+Time: Thu May 08 2025 15:47:17 GMT+0300 (שעון ישראל (קיץ))
+Message: Route /api/login not found.
+Stack: undefined
+---------------------------------------
+
+Time: Thu May 08 2025 15:47:37 GMT+0300 (שעון ישראל (קיץ))
+Message: Route /login not found.
+Stack: undefined
+---------------------------------------
+

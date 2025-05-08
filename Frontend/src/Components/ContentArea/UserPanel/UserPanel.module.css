@@ -27,11 +27,9 @@
 
 .PasswordContainer {
   flex: 1;
-  background-color: black;
   height: 100px;
 }
 .EmailContainer {
   flex: 1;
-  background-color: red;
   height: 100px;
 }

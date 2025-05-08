@@ -32,6 +32,7 @@ class UserService {
     if (!user) throw new ValidationError("Invalid email or password!");
 
     const token = cyber.generateNewToken(user);
+
     return token;
   }
 
