@@ -13,9 +13,9 @@ class UserController {
   }
 
   private registerRoutes(): void {
-    this.router.post("/register", cyber.isTokenValid, this.register);
-    this.router.post("/login", cyber.isTokenValid, this.login);
-    this.router.post("/resetPassword", cyber.isTokenValid, this.resetPassword);
+    this.router.post("/register", this.register);
+    this.router.post("/login", this.login);
+    this.router.post("/resetPassword", this.resetPassword);
   }
 
   public async register(
@@ -49,8 +49,8 @@ class UserController {
   ) {
     try {
       const credentials = new credentialsModel(request.body);
-      await userService.resetPassword(credentials);
-      response.status(StatusCode.OK).send("Password reset successfully");
+      const token = await userService.resetPassword(credentials);
+      response.status(StatusCode.OK).json(token);
     } catch (error: any) {
       next(error);
     }

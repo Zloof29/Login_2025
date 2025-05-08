@@ -7,6 +7,7 @@ import { userService } from "../../../Services/UserService";
 import { useSelector } from "react-redux";
 import { AppState } from "../../../Redux/store";
 import { UserModel } from "../../../Models/UserModel";
+import { jwtDecode } from "jwt-decode";
 
 export function ResetPassword(): React.ReactElement {
   const { register, handleSubmit } = useForm<CredentialsModel>();
@@ -26,20 +27,22 @@ export function ResetPassword(): React.ReactElement {
   return (
     <div className={styles.ResetPassword}>
       <form onClick={handleSubmit(send)}>
-        <label>
-          Old Password:
-          <input
-            type="password"
-            {...register("password", { required: "Password is required!" })}
-          />
-        </label>
-        <label>
-          New Password:
-          <input
-            type="password"
-            {...register("password", { required: "Password is required!" })}
-          />
-        </label>
+        <h1>Reset Password</h1>
+        <input
+          type="password"
+          placeholder="new Password"
+          {...register("password", {
+            required: "Password is required!",
+            minLength: {
+              value: 8,
+              message: "Password must be at least 8 characters.",
+            },
+            maxLength: {
+              value: 12,
+              message: "Password must be maximum 12 characters.",
+            },
+          })}
+        />
         <button type="submit">Reset Password</button>
       </form>
     </div>
