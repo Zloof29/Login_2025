@@ -3,6 +3,7 @@ import styles from "./UserPanel.module.css";
 import { AppState } from "../../../Redux/store";
 import { UserModel } from "../../../Models/UserModel";
 import { ResetPassword } from "../ResetPassword/ResetPassword";
+import { ChangeEmail } from "../ChangeEmail/ChangeEmail";
 
 export function UserPanel(): React.ReactElement {
   const user = useSelector<AppState, UserModel>((store) => store.user);
@@ -24,7 +25,9 @@ export function UserPanel(): React.ReactElement {
           </div>
         </div>
         <div className={styles.EmailContainer}>
-          <div className={styles.BoxForInputs}></div>
+          <div className={styles.BoxForInputs}>
+            <ChangeEmail />
+          </div>
         </div>
       </div>
     </div>

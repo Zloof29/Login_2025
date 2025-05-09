@@ -1,0 +1,16 @@
+.ChangeEmail {
+  margin-top: 16px;
+}
+
+.ChangeEmail > form {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+}
+
+.ChangeEmail > form > input {
+  width: 300px;
+  height: 25px;
+  margin-bottom: 16px;
+}
