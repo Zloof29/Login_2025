@@ -15,7 +15,8 @@ class UserController {
   private registerRoutes(): void {
     this.router.post("/register", this.register);
     this.router.post("/login", this.login);
-    this.router.post("/resetPassword", this.resetPassword);
+    this.router.post("/resetPassword", cyber.isTokenValid, this.resetPassword);
+    this.router.post("/changeEmail", cyber.isTokenValid, this.changeEmail);
   }
 
   public async register(
@@ -50,6 +51,20 @@ class UserController {
     try {
       const credentials = new credentialsModel(request.body);
       const token = await userService.resetPassword(credentials);
+      response.status(StatusCode.OK).json(token);
+    } catch (error: any) {
+      next(error);
+    }
+  }
+
+  public async changeEmail(
+    request: Request,
+    response: Response,
+    next: NextFunction
+  ) {
+    try {
+      const credentials = new credentialsModel(request.body);
+      const token = await userService.changeEmail(credentials);
       response.status(StatusCode.OK).json(token);
     } catch (error: any) {
       next(error);

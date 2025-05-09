@@ -48,6 +48,17 @@ class UserService {
 
     return cyber.generateNewToken(user);
   }
+
+  public async changeEmail(credentials: credentialsModel) {
+    const user = await UserModel.findOne({ email: credentials.email }).exec();
+
+    if (!user) throw new ValidationError("Email not found!");
+
+    user.email = credentials.email;
+    await user.save();
+
+    return cyber.generateNewToken(user);
+  }
 }
 
 export const userService = new UserService();

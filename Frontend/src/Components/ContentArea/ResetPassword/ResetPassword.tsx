@@ -7,7 +7,6 @@ import { userService } from "../../../Services/UserService";
 import { useSelector } from "react-redux";
 import { AppState } from "../../../Redux/store";
 import { UserModel } from "../../../Models/UserModel";
-import { jwtDecode } from "jwt-decode";
 
 export function ResetPassword(): React.ReactElement {
   const { register, handleSubmit } = useForm<CredentialsModel>();
