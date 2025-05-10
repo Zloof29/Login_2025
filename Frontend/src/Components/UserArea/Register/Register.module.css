@@ -35,3 +35,23 @@
 .Register form > button:hover {
   font-weight: bold;
 }
+
+.Register .LoginSpan {
+  display: none;
+}
+
+@media screen and (max-width: 600px) {
+  .Register .LoginSpan {
+    display: flex;
+  }
+
+  .Register .LoginLink {
+    text-decoration: none;
+    color: blue;
+    padding-left: 16px;
+  }
+
+  .Register .LoginLink:active {
+    text-shadow: 0px 0px 5px blue;
+  }
+}
