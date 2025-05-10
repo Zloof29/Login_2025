@@ -46,18 +46,24 @@ class UserService {
     user.password = hashedPassword;
     await user.save();
 
-    return cyber.generateNewToken(user);
+    const token = cyber.generateNewToken(user);
+
+    return token;
   }
 
   public async changeEmail(credentials: credentialsModel) {
-    const user = await UserModel.findOne({ email: credentials.email }).exec();
+    const user = await UserModel.findOne({
+      email: credentials.currentEmail,
+    }).exec();
 
     if (!user) throw new ValidationError("Email not found!");
 
     user.email = credentials.email;
     await user.save();
 
-    return cyber.generateNewToken(user);
+    const token = cyber.generateNewToken(user);
+
+    return token;
   }
 }
 

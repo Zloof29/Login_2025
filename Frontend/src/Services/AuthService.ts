@@ -3,7 +3,7 @@ import { errorHandler } from "../Utils/ErrorHandler";
 import { UserModel } from "../Models/UserModel";
 import { Role } from "../Models/Enums";
 
-export class AuthService {
+class AuthService {
   public isLoggedIn(token: string): boolean {
     if (!token) return false;
     try {
@@ -15,7 +15,6 @@ export class AuthService {
       return decodedToken.exp > currentTime;
     } catch (error: any) {
       console.log(errorHandler.getError(error));
-
       return false;
     }
   }
@@ -49,3 +48,5 @@ export class AuthService {
     }
   }
 }
+
+export const authService = new AuthService();

@@ -4,6 +4,7 @@ import { userService } from "../4-services/user-service";
 import { StatusCode } from "../3-models/enums";
 import { credentialsModel } from "../3-models/credentials-model";
 import { cyber } from "../2-utils/cyber";
+import { securityMiddleware } from "../6-middleware/security-middleware";
 
 class UserController {
   public readonly router = express.Router();
@@ -15,8 +16,8 @@ class UserController {
   private registerRoutes(): void {
     this.router.post("/register", this.register);
     this.router.post("/login", this.login);
-    this.router.post("/resetPassword", cyber.isTokenValid, this.resetPassword);
-    this.router.post("/changeEmail", cyber.isTokenValid, this.changeEmail);
+    this.router.post("/resetPassword", securityMiddleware.verifyLoggedIn, this.resetPassword);
+    this.router.post("/changeEmail", securityMiddleware.verifyLoggedIn, this.changeEmail);
   }
 
   public async register(

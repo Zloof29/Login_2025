@@ -58,6 +58,7 @@ class UserService {
 
   public logout() {
     localStorage.removeItem("token");
+
     const action = userAction.logout();
     store.dispatch(action);
   }
