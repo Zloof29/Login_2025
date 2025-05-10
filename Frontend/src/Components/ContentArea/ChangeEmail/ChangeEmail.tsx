@@ -1,14 +1,12 @@
 import { useForm } from "react-hook-form";
 import styles from "./ChangeEmail.module.css";
-import { useSelector } from "react-redux";
-import { AppState } from "../../../Redux/store";
-import { UserModel } from "../../../Models/UserModel";
-import { useEffect } from "react";
-import { useNavigate } from "react-router-dom";
 import { CredentialsModel } from "../../../Models/CredentialsModel";
 import { notify } from "../../../Utils/Notify";
 import { errorHandler } from "../../../Utils/ErrorHandler";
 import { userService } from "../../../Services/UserService";
+import { useSelector } from "react-redux";
+import { AppState } from "../../../Redux/store";
+import { UserModel } from "../../../Models/UserModel";
 
 export function ChangeEmail(): React.ReactElement {
   const {
@@ -16,20 +14,12 @@ export function ChangeEmail(): React.ReactElement {
     handleSubmit,
     formState: { errors },
   } = useForm<CredentialsModel>({ mode: "onChange" });
-  const user = useSelector<AppState, UserModel>((store) => store.user);
-  const navigate = useNavigate();
 
-  useEffect(() => {
-    if (!user) {
-      navigate("/login");
-      console.error("User not found");
-    } else {
-      console.log("User is logged in:", user);
-    }
-  }, [user]);
+  const user = useSelector<AppState, UserModel>((store) => store.user);
 
   async function send(credentials: CredentialsModel) {
     try {
+      credentials.currentEmail = user.email;
       await userService.changeEmail(credentials);
       notify.success("Email has been changed!");
     } catch (error: any) {
