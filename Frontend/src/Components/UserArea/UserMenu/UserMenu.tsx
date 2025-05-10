@@ -49,6 +49,7 @@ export function UserMenu(): React.ReactElement {
             {user.roleId === "2" ? "Admin" : "User"}
           </span>
           <NavLink
+            className={styles.Logout}
             to="/login"
             onClick={(event) => {
               const confirmLogOut = window.confirm(
