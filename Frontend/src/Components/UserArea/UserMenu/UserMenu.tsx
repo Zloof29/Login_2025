@@ -46,7 +46,7 @@ export function UserMenu(): React.ReactElement {
         <>
           <span>
             Hello {user.firstName} {user.lastName} | Email: {user.email} | Role:{" "}
-            {user.roleId === "2" ? "Admin" : "User"}
+            {user.roleId === "1" ? "Admin" : "User"}
           </span>
           <NavLink
             className={styles.Logout}
