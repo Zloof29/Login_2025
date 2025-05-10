@@ -1,5 +1,6 @@
 .ChangeEmail {
   margin-top: 16px;
+  box-sizing: border-box;
 }
 
 .ChangeEmail > form {
@@ -13,4 +14,23 @@
   width: 300px;
   height: 25px;
   margin-bottom: 16px;
+}
+
+.ChangeEmail > form > button {
+  border: 1px solid transparent;
+  border-radius: 8px;
+  font-size: 24px;
+  background-color: rgb(112, 202, 112);
+}
+
+.ChangeEmail > form > button:hover {
+  background-color: rgb(76, 203, 76);
+}
+
+.ChangeEmail > form > button:active {
+  font-weight: bold;
+}
+
+.ChangeEmail .ErrorMessage {
+  color: red;
 }

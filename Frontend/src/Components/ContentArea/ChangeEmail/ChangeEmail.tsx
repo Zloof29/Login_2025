@@ -42,7 +42,7 @@ export function ChangeEmail(): React.ReactElement {
             },
           })}
         />
-        {errors.email && <span>{errors.email.message}</span>}
+        {errors.email && <span className={styles.ErrorMessage}>{errors.email.message}</span>}
 
         <button>Change Email</button>
       </form>

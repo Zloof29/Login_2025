@@ -9,7 +9,11 @@ import { AppState } from "../../../Redux/store";
 import { UserModel } from "../../../Models/UserModel";
 
 export function ResetPassword(): React.ReactElement {
-  const { register, handleSubmit } = useForm<CredentialsModel>();
+  const {
+    register,
+    handleSubmit,
+    formState: { errors },
+  } = useForm<CredentialsModel>({ mode: "onChange" });
 
   const user = useSelector<AppState, UserModel>((store) => store.user);
 
@@ -42,6 +46,9 @@ export function ResetPassword(): React.ReactElement {
             },
           })}
         />
+        {errors.password && (
+          <span className={styles.ErrorMessage}>{errors.password.message}</span>
+        )}
         <button type="submit">Reset Password</button>
       </form>
     </div>
