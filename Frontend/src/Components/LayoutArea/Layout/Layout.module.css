@@ -25,3 +25,9 @@ body {
   background-color: rgb(43, 163, 163);
   padding: 16px;
 }
+
+@media screen and (max-width: 600px) {
+  .Main2 {
+    display: none;
+  }
+}

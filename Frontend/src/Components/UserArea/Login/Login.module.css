@@ -37,3 +37,27 @@
 .Login form > input + span {
   color: red;
 }
+
+.Login .RegisterForSmallScreen {
+  display: none;
+}
+
+@media screen and (max-width: 600px) {
+  .Login .RegisterForSmallScreen {
+    display: flex;
+  }
+
+  .Login .RegisterLink {
+    text-decoration: none;
+    color: blue;
+    padding-left: 16px;
+  }
+
+  .Login .RegisterLink:active {
+    text-shadow: 0px 0px 5px blue;
+  }
+
+  .Login h1 {
+    text-align: center;
+  }
+}

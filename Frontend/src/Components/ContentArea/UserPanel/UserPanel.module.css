@@ -33,3 +33,18 @@
   flex: 1;
   height: 100px;
 }
+
+@media screen and (max-width: 600px) {
+  .EmailContainer {
+    display: flex;
+    flex-direction: column;
+  }
+  .PasswordContainer {
+    display: flex;
+    flex-direction: column;
+  }
+  .SideBySideContainer {
+    display: flex;
+    flex-direction: column;
+  }
+}

@@ -1,4 +1,4 @@
-import { useNavigate } from "react-router-dom";
+import { NavLink, useNavigate } from "react-router-dom";
 import { CredentialsModel } from "../../../Models/CredentialsModel";
 import styles from "./Login.module.css";
 import { useForm } from "react-hook-form";
@@ -64,6 +64,11 @@ export function Login(): React.ReactElement {
         {errors.password && <span>{errors.password.message}</span>}
 
         <button>Sign In</button>
+
+        <span className={styles.RegisterForSmallScreen}>
+          Don't have a account?
+          <NavLink className={styles.RegisterLink} to={"/register"}>Register</NavLink>
+        </span>
       </form>
     </div>
   );

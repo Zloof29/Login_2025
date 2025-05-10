@@ -1,6 +1,8 @@
 .ChangeEmail {
-  margin-top: 16px;
   box-sizing: border-box;
+  border-right: 3px solid aqua;
+  border-bottom: 3px solid aqua;
+  height: 500px;
 }
 
 .ChangeEmail > form {
@@ -33,4 +35,10 @@
 
 .ChangeEmail .ErrorMessage {
   color: red;
+}
+
+@media screen and (max-width: 600px) {
+  .ChangeEmail {
+    border: 0;
+  }
 }

@@ -1,7 +1,7 @@
 import { useForm } from "react-hook-form";
 import styles from "./Register.module.css";
 import { UserModel } from "../../../Models/UserModel";
-import { useNavigate } from "react-router-dom";
+import { NavLink, useNavigate } from "react-router-dom";
 import { notify } from "../../../Utils/Notify";
 import { errorHandler } from "../../../Utils/ErrorHandler";
 import { userService } from "../../../Services/UserService";
@@ -18,7 +18,7 @@ export function Register(): React.ReactElement {
     try {
       await userService.register(user);
       notify.success("Welcome!");
-      // navigate("/")
+      navigate("/userPanel");
     } catch (error: any) {
       notify.error(errorHandler.getError(error));
     }
@@ -41,7 +41,6 @@ export function Register(): React.ReactElement {
           })}
         />
         {errors.firstName && <span>{errors.firstName.message}</span>}
-
         <input
           type="text"
           placeholder="Last name"
@@ -54,7 +53,6 @@ export function Register(): React.ReactElement {
           })}
         />
         {errors.lastName && <span>{errors.lastName.message}</span>}
-
         <input
           type="text"
           placeholder="Email"
@@ -67,7 +65,6 @@ export function Register(): React.ReactElement {
           })}
         />
         {errors.email && <span>{errors.email.message}</span>}
-
         <input
           type="password"
           placeholder="Password"
@@ -87,8 +84,13 @@ export function Register(): React.ReactElement {
           })}
         />
         {errors.password && <span>{errors.password.message}</span>}
-
         <button>Sign Up</button>
+        <span className={styles.LoginSpan}>
+          Already have account?
+          <NavLink className={styles.LoginLink} to={"/login"}>
+            Log in
+          </NavLink>
+        </span>
       </form>
     </div>
   );
