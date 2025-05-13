@@ -13,6 +13,7 @@ export function ResetPassword(): React.ReactElement {
     register,
     handleSubmit,
     formState: { errors },
+    reset,
   } = useForm<CredentialsModel>({ mode: "onChange" });
 
   const user = useSelector<AppState, UserModel>((store) => store.user);
@@ -22,6 +23,7 @@ export function ResetPassword(): React.ReactElement {
       const credentialsWithEmail = { ...credentials, email: user.email };
       await userService.resetPassword(credentialsWithEmail);
       notify.success("Password has been changed");
+      reset();
     } catch (error: any) {
       notify.error(errorHandler.getError(error));
     }
