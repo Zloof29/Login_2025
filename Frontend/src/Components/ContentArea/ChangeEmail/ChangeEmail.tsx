@@ -13,6 +13,7 @@ export function ChangeEmail(): React.ReactElement {
     register,
     handleSubmit,
     formState: { errors },
+    reset,
   } = useForm<CredentialsModel>({ mode: "onChange" });
 
   const user = useSelector<AppState, UserModel>((store) => store.user);
@@ -22,6 +23,7 @@ export function ChangeEmail(): React.ReactElement {
       credentials.currentEmail = user.email;
       await userService.changeEmail(credentials);
       notify.success("Email has been changed!");
+      reset();
     } catch (error: any) {
       notify.error(errorHandler.getError(error));
     }
@@ -42,7 +44,9 @@ export function ChangeEmail(): React.ReactElement {
             },
           })}
         />
-        {errors.email && <span className={styles.ErrorMessage}>{errors.email.message}</span>}
+        {errors.email && (
+          <span className={styles.ErrorMessage}>{errors.email.message}</span>
+        )}
 
         <button>Change Email</button>
       </form>
